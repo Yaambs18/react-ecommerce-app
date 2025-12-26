@@ -1,0 +1,32 @@
+header {
+    text-align: center;
+    margin: 0;
+    padding: 0px;
+    padding-bottom: 30px;
+    background: rgb(121, 170, 212);
+    color: white;
+}
+
+header ul{
+    display: flex;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    justify-content: center;
+    list-style: none;
+    border-bottom: 0.1rem solid white;
+    position: fixed;
+    top: 0%;
+    background: rgb(7, 27, 44);
+    width: 100%;
+    z-index: 1;
+}
+
+header li{
+    margin: 0 40px;
+}
+
+header h1{
+    padding: 40px;
+    font-size: 70px;
+}
