@@ -1,8 +1,16 @@
 import { Button } from "react-bootstrap";
 import "./Header.css";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
 const Header = (props) => {
-    const totalAmount = props.cart?.length || 2;
+
+    const cartCtx = useContext(CartContext);
+
+    const totalAmount = cartCtx.items.reduce((currNumber, item) => {
+        return currNumber + item.quantity;
+    }, 0);
+    
     return (
         <header>
             <ul className="header">

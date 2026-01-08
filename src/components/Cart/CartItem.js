@@ -1,8 +1,19 @@
 import { Button } from "react-bootstrap";
 
 import "./CartItem.css";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
 const CartItem = (props) => {
+    const cartCtx = useContext(CartContext);
+
+    const removeItemHandler = () => {
+        cartCtx.removeItem(props.id);
+    }
+
+    const addItemHandler = () => {
+        cartCtx.addItem({ id: props.id, name: props.name, price: props.price, quantity: 1 });
+    }
     return (
         <li className="cart-item">
             <div>
@@ -13,8 +24,8 @@ const CartItem = (props) => {
                 </div>
             </div>
             <div className="actions">
-                <Button>-</Button>
-                <Button>+</Button>
+                <Button onClick={removeItemHandler}>-</Button>
+                <Button onClick={addItemHandler}>+</Button>
             </div>
         </li>
     )
