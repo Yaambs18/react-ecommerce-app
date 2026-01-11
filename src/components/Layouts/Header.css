@@ -2,7 +2,7 @@ header {
     text-align: center;
     margin: 0;
     padding: 0px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     background: rgb(121, 170, 212);
     color: white;
 }
@@ -39,5 +39,16 @@ header .cart {
 @media (max-width: 552px) {
     header li {
         margin: 0 10px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    header {
+        padding-bottom: 0;
+    }
+    header h1 {
+        padding-top: 120px;
+        font-size: 60px;
     }
 }
