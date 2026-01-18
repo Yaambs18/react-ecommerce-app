@@ -19,6 +19,7 @@ const Header = (props) => {
                     <li className="nav-item"><Link to="/">Home</Link></li>                
                     <li className="nav-item"><Link to="/store">Store</Link></li>                
                     <li className="nav-item"><Link to="/about">About</Link></li>
+                    <li className="nav-item"><Link to="/contact-us">Contact Us</Link></li>
 
                     <li className="nav-item cart">
                         <Button variant="light" className="cart-button" onClick={props.onCartClick}>
