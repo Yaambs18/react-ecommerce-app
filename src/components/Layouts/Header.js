@@ -17,7 +17,7 @@ const Header = (props) => {
             <nav className="navbar navbar-expand-md navbar-light bg-light">
                 <ul className="navbar-nav">
                     <li className="nav-item"><Link to="/">Home</Link></li>                
-                    <li className="nav-item"><Link to="/store">Store</Link></li>                
+                    <li className="nav-item"><Link to="/products">Store</Link></li>                
                     <li className="nav-item"><Link to="/about">About</Link></li>
                     <li className="nav-item"><Link to="/contact-us">Contact Us</Link></li>
 
