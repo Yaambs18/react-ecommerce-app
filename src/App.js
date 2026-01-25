@@ -6,6 +6,8 @@ import About from './pages/About';
 import Home from './pages/Home';
 import ContactUs from './pages/ContactUs';
 import ProductDetail from './components/Products/ProductDetail';
+import Auth from './pages/Auth';
+import AuthProvider from './store/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/products/:id',
         element: <ProductDetail />
+      },
+      {
+        path: '/auth',
+        element: <Auth />
       }
     ]
   }
@@ -39,7 +45,9 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
 }
 

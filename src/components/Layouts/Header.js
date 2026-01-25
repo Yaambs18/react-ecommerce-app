@@ -29,6 +29,9 @@ const Header = (props) => {
                         </Button>
                             
                     </li>
+                    <li className="nav-item">
+                        <Link to="/auth">Login</Link>
+                    </li>
                 </ul>
             </nav>
             <h1 className="text-center">Ecommerce App</h1>

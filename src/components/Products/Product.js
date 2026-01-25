@@ -15,8 +15,8 @@ const Product = (props) => {
 
     const productsList = props.productsList.map((product, index) => {
         return (
-        <Link to={`/products/${product.id}`} style={{ textDecoration: 'none' }}>
-            <Card key={index} style={{ width: '18rem', margin: '20px' }}>
+        <Link to={`/products/${product.id}`} style={{ textDecoration: 'none' }} key={index}>
+            <Card style={{ width: '18rem', margin: '20px' }}>
                 <Card.Img className="product-image" variant="top" src={product.imageUrl} />
                 <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
