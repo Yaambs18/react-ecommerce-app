@@ -8,6 +8,8 @@ import ContactUs from './pages/ContactUs';
 import ProductDetail from './components/Products/ProductDetail';
 import Auth from './pages/Auth';
 import AuthProvider from './store/AuthProvider';
+import ProtectedRoute from './pages/ProtectedRoute';
+import PublicRoute from './pages/PublicRoute';
 
 const router = createBrowserRouter([
   {
@@ -19,10 +21,6 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/products',
-        element: <Products />
-      },
-      {
         path: '/about',
         element: <About />
       },
@@ -30,13 +28,31 @@ const router = createBrowserRouter([
         path: '/contact-us',
         element: <ContactUs />
       },
+
+      //public routes
       {
-        path: '/products/:id',
-        element: <ProductDetail />
+        element: <PublicRoute />,
+        children: [
+          {
+            path: '/auth',
+            element: <Auth />
+          }
+        ]
       },
+
+      //protected routes
       {
-        path: '/auth',
-        element: <Auth />
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/products',
+            element: <Products />
+          },
+          {
+            path: '/products/:id',
+            element: <ProductDetail />
+          },
+        ]
       }
     ]
   }

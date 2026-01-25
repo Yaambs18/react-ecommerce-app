@@ -2,15 +2,24 @@ import { Button } from "react-bootstrap";
 import "./Header.css";
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
-import { Link } from "react-router-dom";
+import { Link, replace, useNavigate } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
+
+    const authCtx = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const cartCtx = useContext(CartContext);
 
     const totalAmount = cartCtx.items.reduce((currNumber, item) => {
         return currNumber + item.quantity;
     }, 0);
+
+    const logoutHandler = () => {
+        authCtx.clearToken();
+        navigate('/auth', { replace: true });
+    }
     
     return (
         <header>
@@ -29,9 +38,13 @@ const Header = (props) => {
                         </Button>
                             
                     </li>
-                    <li className="nav-item">
+                    { !authCtx.isLoggedIn && <li className="nav-item">
                         <Link to="/auth">Login</Link>
-                    </li>
+                    </li> }
+                    { 
+                        authCtx.isLoggedIn && 
+                        <Button variant="link" onClick={logoutHandler}>Logout</Button>
+                    }
                 </ul>
             </nav>
             <h1 className="text-center">Ecommerce App</h1>

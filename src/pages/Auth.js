@@ -29,13 +29,12 @@ const Auth = () => {
             });
 
             const data = await response.json();
-            if (!response) {
+            if (!response.ok) {
                 throw new Error(data.error.message || 'Something went wrong !!!');
             }
             authCtx.setToken(data.idToken);
             emailRef.current.value = '';
             passRef.current.value = '';
-            navigate('/products', { replace: true });
         } catch (error) {
             console.error(error);
             alert(error.message);

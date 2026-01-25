@@ -3,7 +3,7 @@ import AuthContext from "./auth-context";
 
 const initialState = {
     token: localStorage.getItem('userToken'),
-    isLoggedIn: false,
+    isLoggedIn: localStorage.getItem('userToken') ? true : false,
     setToken: (token) => {},
     clearToken: () => {}
 };
@@ -32,7 +32,7 @@ const AuthProvider = (props) => {
 
     const storeTokenHandler = (token) => {
         dispacth({
-            action: 'ADD_TOKEN',
+            type: 'ADD_TOKEN',
             token
         });
         localStorage.setItem('userToken', token);
@@ -40,7 +40,7 @@ const AuthProvider = (props) => {
 
     const clearTokenHandler = () => {
         dispacth({
-            action: 'REMOVE_TOKEN'
+            type: 'REMOVE_TOKEN'
         });
         localStorage.removeItem('userToken');
     }
