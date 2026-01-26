@@ -32,7 +32,7 @@ const Auth = () => {
             if (!response.ok) {
                 throw new Error(data.error.message || 'Something went wrong !!!');
             }
-            authCtx.setToken(data.idToken);
+            authCtx.setToken(data.idToken, emailRef.current.value);
             emailRef.current.value = '';
             passRef.current.value = '';
         } catch (error) {

@@ -3,6 +3,7 @@ import AuthContext from "./auth-context";
 
 const initialState = {
     token: localStorage.getItem('userToken'),
+    userEmail: localStorage.getItem('userEmail'),
     isLoggedIn: localStorage.getItem('userToken') ? true : false,
     setToken: (token) => {},
     clearToken: () => {}
@@ -14,12 +15,14 @@ const reducerHandler = (state, action) => {
             return {
                 ...state,
                 token: action.token,
+                userEmail: action.userEmail,
                 isLoggedIn: true
             };
         case "REMOVE_TOKEN":
             return {
                 ...state,
                 token: null,
+                userEmail: null,
                 isLoggedIn: false
             }
         default:
@@ -30,12 +33,14 @@ const reducerHandler = (state, action) => {
 const AuthProvider = (props) => {
     const [authState, dispacth] = useReducer(reducerHandler, initialState);
 
-    const storeTokenHandler = (token) => {
+    const storeTokenHandler = (token, email) => {
         dispacth({
             type: 'ADD_TOKEN',
-            token
+            token,
+            userEmail: email
         });
         localStorage.setItem('userToken', token);
+        localStorage.setItem('userEmail', email);
     }
 
     const clearTokenHandler = () => {
@@ -43,11 +48,13 @@ const AuthProvider = (props) => {
             type: 'REMOVE_TOKEN'
         });
         localStorage.removeItem('userToken');
+        localStorage.removeItem('userEmail');
     }
 
     return (
         <AuthContext.Provider value={{
             token: authState.token,
+            userEmail: authState.userEmail,
             isLoggedIn: authState.isLoggedIn,
             setToken: storeTokenHandler,
             clearToken: clearTokenHandler

@@ -15,16 +15,16 @@ const Product = (props) => {
 
     const productsList = props.productsList.map((product, index) => {
         return (
-        <Link to={`/products/${product.id}`} style={{ textDecoration: 'none' }} key={index}>
-            <Card style={{ width: '18rem', margin: '20px' }}>
+            <Card key={index} style={{ width: '18rem', margin: '20px' }}>
                 <Card.Img className="product-image" variant="top" src={product.imageUrl} />
                 <Card.Body>
+                <Link to={`/products/${product.id}`} style={{ textDecoration: 'none' }}>
                     <Card.Title>{product.title}</Card.Title>
+                </Link>
                     <Card.Text>{product.price}</Card.Text>
                     <Button variant="primary" onClick={() => addToCartHandler(product)}>Add to Cart</Button>
                 </Card.Body>
             </Card>
-        </Link>
         );
     })
     return productsList;

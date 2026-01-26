@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import "./Header.css";
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
-import { Link, replace, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
@@ -12,7 +12,7 @@ const Header = (props) => {
 
     const cartCtx = useContext(CartContext);
 
-    const totalAmount = cartCtx.items.reduce((currNumber, item) => {
+    const totalAmount = (cartCtx.items || []).reduce((currNumber, item) => {
         return currNumber + item.quantity;
     }, 0);
 
